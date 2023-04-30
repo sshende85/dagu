@@ -7,10 +7,11 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import { mainListItems } from './menu';
+import { MainListItems } from './menu';
 import { Grid, IconButton } from '@mui/material';
-import icon from '../../assets/images/dagu.png';
+import icon from '../../assets/images/proconnect-logo.png';
 import { AppBarContext } from './contexts/AppBarContext';
+import { Outlet } from 'react-router-dom';
 
 const drawerWidthClosed = 64;
 const drawerWidth = 240;
@@ -116,7 +117,7 @@ function Content({
               <IconButton onClick={toggleDrawer}>
                 <img
                   src={icon}
-                  alt="dagu"
+                  alt="ProConnect"
                   width={64}
                   style={{
                     maxWidth: '64px',
@@ -141,7 +142,7 @@ function Content({
                 pl: '6px',
               }}
             >
-              {mainListItems}
+              <MainListItems></MainListItems>
             </List>
           </Box>
         </Drawer>
@@ -188,7 +189,7 @@ function Content({
                   </NavBarTitleText>
                 )}
               </AppBarContext.Consumer>
-              <NavBarTitleText>{title || 'dagu'}</NavBarTitleText>
+              <NavBarTitleText>{title || 'ProConnect'}</NavBarTitleText>
             </Toolbar>
           </AppBar>
           <Grid
@@ -207,7 +208,7 @@ function Content({
               }
             }}
           >
-            {children}
+            <Outlet></Outlet>
           </Grid>
         </Box>
       </Box>

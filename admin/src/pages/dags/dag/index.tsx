@@ -19,14 +19,19 @@ type Params = {
   name: string;
 };
 
-function DAGDetails() {
+function DAGDetails() 
+{
   const params = useParams<Params>();
+
   const appBarContext = React.useContext(AppBarContext);
+
   const path = useLocation().pathname;
+
   const baseUrl = useMemo(
     () => `/dags/${encodeURI(params.name!)}`,
     [params.name]
   );
+
   const { data, isValidating } = useSWR<GetDAGResponse>(
     `${path}?${new URLSearchParams(window.location.search).toString()}`,
     null,
@@ -34,6 +39,7 @@ function DAGDetails() {
       refreshInterval: 2000,
     }
   );
+
   const { mutate } = useSWRConfig();
 
   const refreshFn = React.useCallback(() => {

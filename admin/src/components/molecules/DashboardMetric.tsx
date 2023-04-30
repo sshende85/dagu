@@ -9,6 +9,9 @@ type Props = {
 };
 
 function DashboardMetric({ title, color, value }: Props) {
+
+console.log("DashboardMetric - value",value);
+
   return (
     <React.Fragment>
       <Title>{title}</Title>

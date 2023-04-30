@@ -31,9 +31,14 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      API_URL: JSON.stringify("http://127.0.0.1:8080"),
-    }),
+    new webpack.DefinePlugin
+    (
+      {
+      
+        API_URL: JSON.stringify("http://127.0.0.1:8080"),
+        REST_API_URL: JSON.stringify("http://23.21.13.121:8000/Proconnect/api"),
+      }
+    ),
     new HtmlWebpackPlugin({
       template: "index.html",
     }),

@@ -12,6 +12,7 @@ import { AppBarContext } from '../../contexts/AppBarContext';
 import useSWR, { useSWRConfig } from 'swr';
 
 function DAGs() {
+  
   const useQuery = () => new URLSearchParams(useLocation().search);
   const query = useQuery();
   const group = query.get('group') || '';
@@ -21,6 +22,11 @@ function DAGs() {
   const { data } = useSWR<GetDAGsResponse>('/', null, {
     refreshInterval: 10000,
   });
+
+  console.log("Dags : query",query);
+  console.log("Dags : group",group);
+  console.log("Dags : appBarContext",appBarContext);
+  console.log("Dags : data",data);
 
   const refreshFn = React.useCallback(() => {
     setTimeout(() => mutate('/'), 500);
@@ -43,8 +49,13 @@ function DAGs() {
         }
       }
     }
+
+    console.log("Dags : ret",ret);
     return ret;
+
   }, [data]);
+
+  console.log("Dags : merged",merged);
 
   return (
     <Box

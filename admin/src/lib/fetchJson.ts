@@ -1,7 +1,11 @@
-export default async function fetchJson<JSON = unknown>(
+export default async function fetchJson<JSON = unknown>
+(
   input: RequestInfo,
   init?: RequestInit
-): Promise<JSON> {
+): Promise<JSON> 
+{
+  console.log("fetchJson - input" , input);
+ 
   const response = await fetch(`${API_URL}${input}`, {
     ...init,
     headers: {
